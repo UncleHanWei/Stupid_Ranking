@@ -1,0 +1,33 @@
+li {
+    list-style: none;
+}
+
+.champion {
+    background-color: rgb(255, 196, 0);
+    font-size: 30px;
+    clip-path: polygon(0% 0, 100% 0%, 0% 2000%, 0 100%);
+}
+
+.champion:hover {
+    cursor: pointer;
+    background-color: rgb(235, 181, 2);
+    font-size: 40px;
+    clip-path: polygon(0% 0, 100% 0%, 0% 1500%, 0 100%);
+}
+
+.rank {
+    background-color: rgb(192, 188, 188);
+    font-size: 20px;
+    width: 90%;
+    clip-path: polygon(0% 0, 100% 0%, 0% 2000%, 0 100%);
+    margin-top: 1px;
+}
+
+.rank:hover {
+    cursor: pointer;
+    background-color: rgb(172, 167, 167);
+    font-size: 30px;
+    width: 90%;
+    /* clip-path: polygon(0% 0, 100% 0%, 0% 1500%, 0 100%); */
+    margin-top: 1px;
+}

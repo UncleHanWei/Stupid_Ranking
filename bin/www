@@ -5,14 +5,15 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('moli-iq-rank:server');
+var debug = require('debug')('stupid-ranking:server');
 var http = require('http');
+require('dotenv').config()
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8787');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**

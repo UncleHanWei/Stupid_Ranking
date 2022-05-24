@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-
+require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var apiDeedRouter = require('./routes/api/addDeed');
@@ -14,7 +14,7 @@ var apiRankRouter = require('./routes/api/getRank');
 var app = express();
 
 // db connection setup
-mongoose.connect('mongodb://localhost:27017/Stupid_Ranking');
+mongoose.connect(process.env.DB_HOST || 'mongodb://localhost:27017/Stupid_Ranking');
 
 
 // view engine setup

@@ -3,31 +3,44 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const schema = require('../../db_schema');
 
+let addMember = (formData) => {
+  return new Promise((rs, rj) => {
+    schema.User.create(formData, function (err, docs) {
+      if (err) {
+        rj(err);
+      }
+      rs();
+    })
+  });
+}
 
 let addDeed = (formData) => {
   return new Promise((rs, rj) => {
-    schema.User.find({ telegram: formData['telegram'] }, {}, function (err, docs) {
+    schema.User.find({ telegram: formData['telegram'] }, {}, async function (err, docs) {
       if (err) {
         rj(err);
       }
       if (docs.length == 0) {
-        rj('No User');
-      } else {
-        schema.Deed.create(formData, function (err, docs) {
-          if (err) {
-            rj(err);
-          }
-          rs();
-        });
-      }
+        try {
+          await addMember({ name: formData['name'], telegram: formData['telegram'], stupid_point: 0 })
+        } catch(error) {
+          rj(error);
+        }
+      } 
+      schema.Deed.create(formData, function (err, docs) {
+        if (err) {
+          rj(err);
+        }
+        rs();
+      });
     })
   });
 }
 
 let addPoint = (formData) => {
   return new Promise((rs, rj) => {
-    schema.User.findOneAndUpdate({ telegram: formData['telegram'] }, { $inc: { 'stupid_point': formData['point'] } }, function(err, docs) {
-      if(err) {
+    schema.User.findOneAndUpdate({ telegram: formData['telegram'] }, { $inc: { 'stupid_point': formData['point'] } }, function (err, docs) {
+      if (err) {
         rj(err);
       }
       rs();

@@ -1,0 +1,36 @@
+{
+  "王婷誼": {
+    "stupid point": 25,
+    "stupid deeds": {
+      "0": {
+        "deed": "說 MOLi 是老魚的實驗室",
+        "point": 5
+      },
+      "1": {
+        "deed": "說因為老魚跟其他老師共用實驗室，難怪要自己搞一間",
+        "point": 10
+      },
+      "2": {
+        "deed": "搞不清楚是自己被加分，還很高興",
+        "point": 10
+      }
+    }
+  },
+  "林惠霖": {
+    "stupid point": 5,
+    "stupid deeds": {
+      "0": {
+        "deed": "待在 MOLi 過夜，晚上要去三樓刷牙，卻被柏瑋洗茶壺的聲音嚇到，不敢上去，所以才勉為其難的第一次用 MOLi 的洗手台刷牙",
+        "point": 5
+      }
+    }
+  },
+  "柯予亮": {
+    "stupid point": 0,
+    "stupid deeds": {}
+  },
+  "陳棋樺": {
+    "stupid point": 0,
+    "stupid deeds": {}
+  }
+}

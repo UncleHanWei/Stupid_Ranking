@@ -5,7 +5,7 @@ const schema = require('../../db_schema');
 
 let getAllUser = () => {
   return new Promise((rs, rj) => {
-    schema.User.find({}, {}, { sort: 'point' }, function (err, docs) {
+    schema.User.find({}, {}, { sort: { 'stupid_point': -1 } }, function (err, docs) {
       if (err) {
         rj(err);
       }

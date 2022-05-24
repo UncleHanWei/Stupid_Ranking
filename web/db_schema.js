@@ -10,7 +10,7 @@ const User = new Schema({
 const Deed = new Schema({
   telegram: String,
   name: String,
-  Deed: String,
+  deed: String,
   point: Number,
   date: String
 })

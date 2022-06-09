@@ -73,17 +73,30 @@ def msg(update: Update, context: CallbackContext) :
                     # print(user_status[username][1]['_id'])
                     res = reports.delete_one({'_id':user_status[username][1]['_id']})
                     # print(res.deleted_count, "個資料已刪除")
-                    update.message.reply_text('操作成功', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                    if update.message.chat.type == 'private' :
+                        update.message.reply_text('操作成功', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                    else :
+                        update.message.reply_text('操作成功')
                 else :
-                    update.message.reply_text('失敗，請聯絡系統管理員檢查', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                    if update.message.chat.type == 'private' :
+                        update.message.reply_text('失敗，請聯絡系統管理員檢查', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                    else :
+                        update.message.reply_text('失敗，請聯絡系統管理員檢查')
+
             elif msg == 'delete' :
                 # 純刪除
                 reports = db.reports
-                res = reports.delete_one({'_id':data['_id']})
+                res = reports.delete_one({'_id':user_status[username][1]['_id']})
                 # print(res.deleted_count, "個資料已刪除")
-                update.message.reply_text('操作成功', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                if update.message.chat.type == 'private' :
+                    update.message.reply_text('操作成功', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                else :
+                    update.message.reply_text('操作成功')
             elif msg == 'cancel' :
-                update.message.reply_text('編輯取消', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                if update.message.chat.type == 'private' :
+                    update.message.reply_text('編輯取消', reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+                else :
+                    update.message.reply_text('編輯取消')
             user_status[username] = None
 
 def report_list(update: Update, context: CallbackContext) -> None :
@@ -144,7 +157,11 @@ def start(update: Update, context: CallbackContext) -> None :
             [KeyboardButton(text='/report'), KeyboardButton(text='/rank'), KeyboardButton(text='/list')],
             [KeyboardButton(text='/start')]
         ]
-    update.message.reply_text(reply_str, reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+    if update.message.chat.type == 'private' :
+        update.message.reply_text(reply_str, reply_markup=ReplyKeyboardMarkup(keyboard=keyboard))
+    else :
+        update.message.reply_text(reply_str)
+    
 
 
 # global variables

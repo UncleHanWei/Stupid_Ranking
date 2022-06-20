@@ -67,7 +67,7 @@ def msg(update: Update, context: CallbackContext) :
                         "deed":data['deed'],
                         "point":data['point']
                     }
-                r = requests.post('http://163.22.32.201:8787/api/add/deed', data=data)
+                r = requests.post('http://127.0.0.1:8787/api/add/deed', data=data)
                 if r.status_code == 200 :
                     reports = db.reports
                     # print(user_status[username][1]['_id'])
@@ -125,7 +125,7 @@ def report_list(update: Update, context: CallbackContext) -> None :
 def rank(update: Update, context: CallbackContext) -> None :
     global uncle_id
     id = update.effective_user.id
-    rank_list = requests.get('http://163.22.32.201:8787/api/get/rank').json()
+    rank_list = requests.get('http://127.0.0.1:8787/api/get/rank').json()
     update.message.reply_text('以下為目前排名')
     reply = ''
     for i in range(len(rank_list)) :
